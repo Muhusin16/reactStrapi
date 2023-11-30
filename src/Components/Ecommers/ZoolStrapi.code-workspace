@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../Gemini/krutsch_webapp"
+		},
+		{
+			"path": "../../../../../Gemini/krutsch_services"
+		},
+		{
+			"path": "../../../../../FIREBASE CONNECTION"
+		},
+		{
+			"path": "../../../../../Web-App"
+		},
+		{
+			"path": "../../../../../Zools-Strapi"
+		},
+		{
+			"path": "../../../.."
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,74 @@
+
+/* .navbar{
+    background-image: url("http://localhost:1337/uploads/download_5119e828ec.jpg");
+} */
+.show-on-hover{
+    display: none;
+}
+.nav-item.dropdown:hover .show-on-hover{
+    display:block;
+}
+.container {
+    width: 1280px;
+    max-width: 100%;
+}
+.container {
+    background-color: transparent;
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.nav-menu {
+    float: right;
+}
+
+.nav-menu, .nav-menu * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+p, label, a, ul {
+    font-size: 1rem;
+}
+p, label, a, ul, h1, h2, h3, h4, h5 {
+    font-family: ralewayregular,Helvetica,sans-serif;
+}
+ul {
+    list-style: disc;
+}
+ul, ol {
+    padding-left: 20px;
+}
+ul, ol, dl, p, details, address, .vcard, figure, pre, fieldset, table, dt, dd, hr {
+    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
+    margin-top: 0;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+ol, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
