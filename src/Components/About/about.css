@@ -1,0 +1,167 @@
+.tc_team-members {
+    clear: both;
+    min-height: 250px;
+    margin-bottom: 40px;
+}
+
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.tc_member-col-single {
+    height: 390px;
+}
+
+.tc_member-col-single {
+    float: left;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: 20%;
+    margin-bottom: 0px;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    position: relative;
+    overflow: hidden;
+}
+.tc_member-col-single {
+    float: left;
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 255px;
+    margin-bottom: 40px;
+}
+.tc_text-center {
+    text-align: center;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.tc_member-thumb .tc_overlay {
+    font-size: 16px;
+    line-height: 24px;
+}
+.tc_overlay {
+    background-color: rgba(0,0,0,0.7);
+}
+.tc_overlay {
+    display: none;
+}
+.tc_overlay {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transition: all 450ms ease-out 0s;
+    -moz-transition: all 450ms ease-out 0s;
+    -o-transition: all 450ms ease-out 0s;
+    transition: all 450ms ease-out 0s;
+    -webkit-transform: translate(0,80px);
+    -moz-transform: translate(0,80px);
+    -ms-transform: translate(0,80px);
+    -o-transform: translate(0,80px);
+    transform: translate(0,80px);
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.tc_member-thumb .tc_overlay h4 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 6px 0;
+    color: #ffffff !important;
+}
+.tc_team-member h4 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 15px 0 8px;
+}
+p, label, a, ul, h1, h2, h3, h4, h5 {
+    font-family: ralewayregular,Helvetica,sans-serif;
+}
+h4 {
+    font-size: 20px;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+h1, h2, h3, h4, h5, h6 {
+    clear: both;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
+    margin-top: 0;
+    color: #444444;
+}
+h4 {
+    font-size: 1.5rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+
+element.style {
+    background-image: url(https://zool.in/wp-content/uploads/2016/12/aboutus.jpg);
+}
+.bg-banner-img {
+    height: 550px;
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}

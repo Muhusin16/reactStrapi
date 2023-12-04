@@ -1,0 +1,102 @@
+.bg-banner-img {
+    height: 550px;
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.banner-text {
+    z-index: 999;
+}
+.banner-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.banner-text .bgcolor-sunglow, .ms-slide-info .bgcolor-sunglow {
+    text-shadow: 1px 1px 3px #fff;
+}
+
+.banner-text h2 span, .ms-slide-info .ms-info h2 span {
+    font-weight: normal;
+}
+.banner-text h2 span {
+    font-weight: bold;
+}
+.fontsize-1 {
+    font-size: 3.888889rem;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.banner-text h2 {
+    color: #000;
+}
+
+.banner-text h2 {
+    width: 55%;
+    margin: auto;
+    text-align: center;
+    margin-top: 2px;
+}
+p, label, a, ul, h1, h2, h3, h4, h5 {
+    font-family: ralewayregular,Helvetica,sans-serif;
+}
+
+h2 {
+    font-size: 32px;
+    font-size: 2rem;
+}
+h2 {
+    line-height: 1.2;
+    font-size: 25px;
+    font-size: 1.5625rem;
+}
+h1, h2, h3, h4, h5, h6 {
+    clear: both;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
+    margin-top: 0;
+    color: #444444;
+}
+h2 {
+    font-size: 2rem;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+user agent stylesheet
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}

@@ -9,7 +9,7 @@ const CloudSolutions = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/cloud-solutions?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*"
+        "http://localhost:1337/api/cloud-solutions?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
       );
       setData(response.data.data);
       console.log(response.data.data);
@@ -24,43 +24,32 @@ const CloudSolutions = () => {
 
   return (
     <>
-      <div></div>
+      {data.length > 0 && (
+        <div className="header-container card text-bg d-flex">
+          <img
+            className="bg-banner-img"
+            src={
+              imgurl +
+              data[0].attributes.Header?.titleImage?.data?.attributes?.url
+            }
+            alt=""
+            width={100}
+            height={350}
+          />
+          <div className="banner-text">
+            <h2>
+              <span className="bgcolor-sunglow fontsize-1">
+                {data[0].attributes.Header?.Title}
+              </span>
+            </h2>
+          </div>
+        </div>
+      )}
       <div className="container">
         {data &&
           data.map((item, index) => (
-            <div key={index} className="card-container ">
-              <div className="card text-bg d-flex">
-                <img
-                  className="img-fluid card-image"
-                  src={
-                    imgurl +
-                    (item.attributes.Header?.titleImage?.data?.attributes
-                      ?.url || "")
-                  }
-                  alt=""
-                  width={100}
-                />
-                <div
-                  className="card-img-overlay"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                  }}
-                >
-                  <h2>
-                    <span className="card-title fontsize-1">
-                      {item.attributes.Header?.Title}
-                    </span>
-                  </h2>
-                </div>
-              </div>
-              <div className="container">
+            <div key={index} className="main-content ">
+              <div className="entry-content-page">
                 <div
                   className="breadcrumbs"
                   typeof="BreadcrumbList"
@@ -86,17 +75,15 @@ const CloudSolutions = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name">Services /</span>
+                    <span property="name"> Services /</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Cloud-Solutions</span>
+                  <span property="name">Cloud Solutions</span>
 
                   <meta property="position" content="3" />
                 </span>
-              </div>
-              <div className="main-content">
                 <h1 className="fontsize-2 main-content-header">
                   {item.attributes.MiddleBlock.Title}
                 </h1>
@@ -107,9 +94,7 @@ const CloudSolutions = () => {
                     </p>
                   </div>
                   <div className="col-md-6">
-                    <h3>
-                      {item.attributes.MiddleBlock.rSubTitle}
-                    </h3>
+                    <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
                     <p>{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
@@ -117,32 +102,79 @@ const CloudSolutions = () => {
                     <h2 className="color-pink fontsize-3">
                       {item.attributes.MiddleBlock.lSubTitle}
                     </h2>
-                   
                   </div>
                   <div className="section-gap20"></div>
                 </div>
+                <div className="container d-flex flex-wrap">
+                  {item.attributes.Portals.map((card, cardIndex) => (
+                    <div key={cardIndex} className="col-md-4 card-column">
+                      <div className="d-flex flex-wrap">
+                        <img
+                          src={
+                            imgurl + (card.image?.data?.attributes?.url || "")
+                          }
+                          alt=""
+                          className="card-image"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="block-desc fontsize-4 top-margin">
+                          <p>
+                            <strong>{card.Title}</strong>
+                          </p>
+                        </h3>
+                      </div>
+                      <div className="block-content">
+                        <p className="fontsize-5">{card.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="container d-flex flex-wrap">
-                {item.attributes.Portals.map((card, cardIndex) => (
-                  <div key={cardIndex} className="col-md-4 card-column">
-                    <div className="d-flex flex-wrap">
-                      <img
-                        src={imgurl + (card.image?.data?.attributes?.url || "")}
-                        alt=""
-                        className="card-image"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="block-desc fontsize-4 top-margin">
-                        <p>{card.Title}</p>
-                      </h3>
-                    </div>
-                    <div className="block-content">
-                      <p className="fontsize-5">{card.description}</p>
+              <hr />
+              <footer id="colophon" className="d-flex" role="contentinfo">
+                <div className="footer-widgets section-padding">
+                  <div className="container">
+                    <div className="row">
+                      {item.attributes.Footer.Heading.map(
+                        (content, headingIndex) => (
+                          <div
+                            key={headingIndex}
+                            className="col-md-3 col-sm-12 footer-column widget-area sidebar"
+                          >
+                            <aside></aside>
+                            <h6 className="widget-title">
+                              <strong>{content.content_title}</strong>
+                            </h6>
+                            <div className="d-flex flex-column">
+                              {content.Content.map((category, catIndex) => (
+                                <span
+                                  key={catIndex}
+                                  className="text-muted"
+                                  style={{ marginBottom: "5px" }} // Add some margin to separate items
+                                >
+                                  {category.category}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )
+                      )}
+
+                      <div className="col-md-3 ">
+                        <div>
+                          <h3 className="footer-title">
+                            {item.attributes.Footer.Title}
+                          </h3>
+                          <p className="text-muted">
+                            {item.attributes.Footer.Desc}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              </footer>
             </div>
           ))}
         {console.log(data)}

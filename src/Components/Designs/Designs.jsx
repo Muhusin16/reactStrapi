@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./webProduct.css";
+import "./design.css";
 
-const WebProduct = () => {
+const Design = () => {
   const imgurl = "http://localhost:1337";
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/web-produts?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/designs?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
       );
       setData(response.data.data);
       console.log(response.data.data);
@@ -82,7 +82,7 @@ const WebProduct = () => {
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Web Products</span>
+                  <span property="name">Designs</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -96,15 +96,20 @@ const WebProduct = () => {
                     <p className="right-margin">
                       {item.attributes.MiddleBlock.lDesc}
                     </p>
+                    <h3 className="color-pink fontsize-3">
+                      {item.attributes.MiddleBlock.lSubTitle}
+                    </h3>
+                    <p className="right-margin">
+                      {item.attributes.MiddleBlock.lDesc1}
+                    </p>
                   </div>
                   <div className="col-md-6">
-                    <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
                     <p>{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
                     <hr />
                     <h2 className="color-pink fontsize-3">
-                      {item.attributes.MiddleBlock.lSubTitle}
+                      {item.attributes.MiddleBlock.lSubTitle1}
                     </h2>
                   </div>
                   <div className="section-gap20"></div>
@@ -184,4 +189,4 @@ const WebProduct = () => {
   );
 };
 
-export default WebProduct;
+export default Design;

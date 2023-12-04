@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./webProduct.css";
+import "./mobilehybrid.css";
 
-const WebProduct = () => {
+const MobileHybrid = () => {
   const imgurl = "http://localhost:1337";
   const [data, setData] = useState([]);
+  const [selectedBox, setSelectedBox] = useState(null);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/web-produts?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/mobile-hybrid-developments?populate[Header][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*&populate[images][populate]=*"
       );
       setData(response.data.data);
       console.log(response.data.data);
@@ -22,7 +23,12 @@ const WebProduct = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const handleBoxClick = (index) => {
+    // Toggle the selected state of the clicked box
+    setSelectedBox((prevSelectedBox) =>
+      prevSelectedBox === index ? null : index
+    );
+  };
   return (
     <>
       <nav></nav>
@@ -82,7 +88,7 @@ const WebProduct = () => {
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Web Products</span>
+                  <span property="name">Mobile Hybrid Development</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -98,39 +104,44 @@ const WebProduct = () => {
                     </p>
                   </div>
                   <div className="col-md-6">
+                  <p>{item.attributes.MiddleBlock.rDesc}</p>
                     <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
-                    <p>{item.attributes.MiddleBlock.rDesc}</p>
+                    <p>{item.attributes.MiddleBlock.rDesc1}</p>
+                    
                   </div>
                   <div className="service-hr-tag">
                     <hr />
+                    <p>
                     <h2 className="color-pink fontsize-3">
                       {item.attributes.MiddleBlock.lSubTitle}
                     </h2>
+                    </p>
                   </div>
                   <div className="section-gap20"></div>
                 </div>
               </div>
-              <div className="container d-flex flex-wrap">
-                {item.attributes.Portals.map((card, cardIndex) => (
-                  <div key={cardIndex} className="col-md-4 card-column">
-                    <div className="d-flex flex-wrap">
-                      <img
-                        src={imgurl + (card.image?.data?.attributes?.url || "")}
-                        alt=""
-                        className="card-image"
-                      />
+              <div className="ecommerceBlocks">
+                <div className="row">
+                  {item.attributes.images.data.map((image, imageIndex) => (
+                    <div
+                      key={imageIndex}
+                      className={`col-md-2 col-sm-4 col-xs-6 ${
+                        selectedBox === imageIndex ? "selected-box" : ""
+                      }`}
+                      onClick={() => handleBoxClick(imageIndex)}
+                    >
+                      <span className="border border-primary-subtle">
+                        <img
+                          src={imgurl + image.attributes.url}
+                          alt="webContent"
+                          className="attachment"
+                        />
+                      </span>
                     </div>
-                    <div>
-                      <h3 className="block-desc fontsize-4 top-margin">
-                        <p>{card.Title}</p>
-                      </h3>
-                    </div>
-                    <div className="block-content">
-                      <p className="fontsize-5">{card.description}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+              
               <hr />
               <footer id="colophon" className="d-flex" role="contentinfo">
                 <div className="footer-widgets section-padding">
@@ -184,4 +195,5 @@ const WebProduct = () => {
   );
 };
 
-export default WebProduct;
+
+export default MobileHybrid;

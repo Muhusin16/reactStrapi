@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./webProduct.css";
+import "./about.css";
 
-const WebProduct = () => {
+const About = () => {
   const imgurl = "http://localhost:1337";
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/web-produts?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/abouts?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
       );
       setData(response.data.data);
       console.log(response.data.data);
@@ -25,7 +25,6 @@ const WebProduct = () => {
 
   return (
     <>
-      <nav></nav>
       {data.length > 0 && (
         <div className="header-container card text-bg d-flex">
           <img
@@ -77,12 +76,12 @@ const WebProduct = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name"> Services /</span>
+                    <span property="name">Services /</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Web Products</span>
+                  <span property="name">About</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -98,7 +97,9 @@ const WebProduct = () => {
                     </p>
                   </div>
                   <div className="col-md-6">
-                    <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
+                    <h3>
+                      {item.attributes.MiddleBlock.rSubTitle}
+                    </h3>
                     <p>{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
@@ -106,6 +107,7 @@ const WebProduct = () => {
                     <h2 className="color-pink fontsize-3">
                       {item.attributes.MiddleBlock.lSubTitle}
                     </h2>
+                   
                   </div>
                   <div className="section-gap20"></div>
                 </div>
@@ -178,10 +180,10 @@ const WebProduct = () => {
             </div>
           ))}
         {console.log(data)}
-        <Link to="/Ecommerce">eCommerce & Portals</Link>
+        <Link to="/MobileApp">CloudSolutions</Link>
       </div>
     </>
   );
 };
 
-export default WebProduct;
+export default About;

@@ -10,7 +10,7 @@ function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const fetchContent = async () => {
     try {
-      const response = await axios.get('http://localhost:1337/api/home-page?populate=*');
+      const response = await axios.get('http://localhost:1337/api/home-pages?populate=*');
       //console.log(response.data.data);
       setContent(response.data.data);
     }
@@ -44,7 +44,7 @@ function Home() {
             ))}
           </div>
           <div className="carousel-inner">
-          {content && content.attributes && content.attributes.header && content.attributes.header.map((item, index) => (
+          {content && content.attributes.map((item, index) => (
               <div key={index} className={`carousel-item ${index === activeSlide ? 'active' : ''}`}>
                 <img src={imgurl+ item.attributes.image.data.attributes.url} className="d-block w-100" height={500} alt="..." />  
                 <div className="carousel-caption d-none d-md-block title">

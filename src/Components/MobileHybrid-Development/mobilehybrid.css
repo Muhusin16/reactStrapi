@@ -1,0 +1,12 @@
+.common-page .main-content {
+    margin-top: 80px;
+}
+
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}

@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./webProduct.css";
+import "./lab.css";
 
-const WebProduct = () => {
+
+const Labs = () => {
   const imgurl = "http://localhost:1337";
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/web-produts?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/labs?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
       );
       setData(response.data.data);
       console.log(response.data.data);
@@ -25,32 +26,32 @@ const WebProduct = () => {
 
   return (
     <>
-      <nav></nav>
-      {data.length > 0 && (
+     <nav></nav>
+     {data.length > 0 && (
         <div className="header-container card text-bg d-flex">
           <img
             className="bg-banner-img"
-            src={
-              imgurl +
-              data[0].attributes.Header?.titleImage?.data?.attributes?.url
-            }
+            src={imgurl + data[0].attributes.Header?.titleImage?.data?.attributes?.url}
             alt=""
             width={100}
             height={350}
           />
-          <div className="banner-text">
-            <h2>
-              <span className="bgcolor-sunglow fontsize-1">
-                {data[0].attributes.Header?.Title}
-              </span>
-            </h2>
-          </div>
+                <div
+                  className="banner-text"
+                >
+                  <h2>
+                    <span  className="bgcolor-sunglow fontsize-1">
+                      {data[0].attributes.Header?.Title}
+                    </span>
+                  </h2>
+                </div>
         </div>
       )}
       <div className="container">
         {data &&
           data.map((item, index) => (
             <div key={index} className="card-container ">
+          
               <div className="container">
                 <div
                   className="breadcrumbs"
@@ -77,12 +78,12 @@ const WebProduct = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name"> Services /</span>
+                    <span property="name">Services /</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Web Products</span>
+                  <span property="name">Designs</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -98,14 +99,20 @@ const WebProduct = () => {
                     </p>
                   </div>
                   <div className="col-md-6">
-                    <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
                     <p>{item.attributes.MiddleBlock.rDesc}</p>
+                    <h3 className="color-pink fontsize-3">
+                      {item.attributes.MiddleBlock.rSubTitle}
+                    </h3>
+                    <p className="right-margin">
+                      {item.attributes.MiddleBlock.rDesc1}
+                    </p>
                   </div>
                   <div className="service-hr-tag">
                     <hr />
                     <h2 className="color-pink fontsize-3">
                       {item.attributes.MiddleBlock.lSubTitle}
                     </h2>
+                   
                   </div>
                   <div className="section-gap20"></div>
                 </div>
@@ -184,4 +191,4 @@ const WebProduct = () => {
   );
 };
 
-export default WebProduct;
+export default Labs;

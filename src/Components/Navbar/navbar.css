@@ -8,6 +8,23 @@
 .nav-item.dropdown:hover .show-on-hover{
     display:block;
 }
+.navbar-nav::after{
+    display: block;
+    content: '';
+    opacity: 0;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: 25px;
+    background: #66cc33;
+    -webkit-transition: opacity 0.5s ease;
+    -moz-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+}
+::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
 .container {
     width: 1280px;
     max-width: 100%;
