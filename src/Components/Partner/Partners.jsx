@@ -1,20 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./ecommerce.css";
-// import { Link } from "react-router-dom";
-// import Navbar from "../Components/Navbar/Navbar";
+import { Link } from "react-router-dom";
+import "./partner.css";
 
-const Ecommers = () => {
+const Partners = () => {
   const imgurl = "http://localhost:1337";
-  const [data, setData] = useState("");
-  const [selectedBox, setSelectedBox] = useState(null);
+  const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/e-commerce-portals?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[images][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/partners?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
       );
       setData(response.data.data);
+      console.log(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -24,15 +23,9 @@ const Ecommers = () => {
     fetchData();
   }, []);
 
-  const handleBoxClick = (index) => {
-    // Toggle the selected state of the clicked box
-    setSelectedBox((prevSelectedBox) =>
-      prevSelectedBox === index ? null : index
-    );
-  };
-
   return (
     <>
+      <nav></nav>
       {data.length > 0 && (
         <div className="header-container card text-bg d-flex">
           <img
@@ -57,8 +50,8 @@ const Ecommers = () => {
       <div className="container">
         {data &&
           data.map((item, index) => (
-            <div key={index} className="main-content ">
-              <div className="entry-content-page">
+            <div key={index} className="card-container ">
+              <div className="container">
                 <div
                   className="breadcrumbs"
                   typeof="BreadcrumbList"
@@ -84,27 +77,25 @@ const Ecommers = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name"> Services /</span>
+                    <span property="name"> Services/</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">eCommerce & Portals</span>
+                  <span property="name"> Partners</span>
 
                   <meta property="position" content="3" />
                 </span>
-                <h1 className="fontsize-2 main-content-header">
+              </div>
+              <div className="main-content">
+                <h1 className="fontsize-2 main-content-header ">
                   {item.attributes.MiddleBlock.Title}
                 </h1>
                 <div className="row">
-                  <div className="col-md-6">
-                    <p className="right-margin">
-                      {item.attributes.MiddleBlock.lDesc}
+                  <div>
+                    <p className="d-flex text-muted">
+                      {item.attributes.MiddleBlock.description}
                     </p>
-                  </div>
-                  <div className="col-md-6">
-                    <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
-                    <p>{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
                     <hr />
@@ -115,52 +106,32 @@ const Ecommers = () => {
                   <div className="section-gap20"></div>
                 </div>
               </div>
-              <div className="services-hr-tag">
-                <h2 className="color-pink fontsize-3">
-                  {item.attributes.lSubTitle}
-                </h2>
-              </div>
               <div className="container d-flex flex-wrap">
                 {item.attributes.Portals.map((card, cardIndex) => (
                   <div key={cardIndex} className="col-md-4 card-column">
-                    <div className="d-flex flex-wrap">
-                      <img
-                        src={imgurl + card.Image.data.attributes.url}
-                        alt=""
-                        className="card-image"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="block-desc fontsize-4 top-margin">
+                     <div>
+                      <h3 className="block-desc fontsize-4 top-margin text-muted">
                         <p>{card.Title}</p>
                       </h3>
                     </div>
+                    <div className="d-flex flex-wrap">
+                      <img
+                        src={imgurl + (card.image?.data?.attributes?.url || "")}
+                        alt=""
+                        className="card-image"
+                        width={280}
+                        height={70}
+                      />
+                    </div>
+                   
                     <div className="block-content">
-                      <p className="fontsize-5">{card.description}</p>
+                      
+                        <p className="fontsize-5 text-muted">{card.description}</p>
+                       
+                      
                     </div>
                   </div>
                 ))}
-              </div>
-              <div className="ecommerceBlocks">
-                <div className="row">
-                  {item.attributes.images.data.map((image, imageIndex) => (
-                    <div
-                      key={imageIndex}
-                      className={`col-md-2 col-sm-4 col-xs-6 ${
-                        selectedBox === imageIndex ? "selected-box" : ""
-                      }`}
-                      onClick={() => handleBoxClick(imageIndex)}
-                    >
-                      <span className="border border-primary-subtle">
-                        <img
-                          src={imgurl + image.attributes.url}
-                          alt="webContent"
-                          className="attachment"
-                        />
-                      </span>
-                    </div>
-                  ))}
-                </div>
               </div>
               <hr />
               <footer id="colophon" className="d-flex" role="contentinfo">
@@ -182,7 +153,7 @@ const Ecommers = () => {
                                 <span
                                   key={catIndex}
                                   className="text-muted"
-                                  style={{ marginBottom: "5px" }} // Adding some margin to separate items
+                                  style={{ marginBottom: "5px" }} // Add some margin to separate items
                                 >
                                   {category.category}
                                 </span>
@@ -208,9 +179,11 @@ const Ecommers = () => {
               </footer>
             </div>
           ))}
+        {console.log(data)}
+        <Link to="/Ecommerce">eCommerce & Portals</Link>
       </div>
     </>
   );
 };
 
-export default Ecommers;
+export default Partners;

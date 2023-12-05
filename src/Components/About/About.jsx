@@ -64,7 +64,7 @@ const About = () => {
                     title="Go to Zool Tech Solutions Pvt Ltd"
                     className="home"
                   >
-                    <span property="name">Zool Tech Solutions Pvt Ltd /</span>
+                    <span property="name">Zool Tech Solutions Pvt Ltd/</span>
                   </a>
                   <meta property="position" content="1" />
                 </span>
@@ -76,12 +76,12 @@ const About = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name">Services /</span>
+                    <span property="name"> Services/</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">About</span>
+                  <span property="name"> About</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -92,7 +92,7 @@ const About = () => {
                 </h1>
                 <div className="row">
                   <div className="col-md-6">
-                    <p className="right-margin">
+                    <p className="right-margin text-muted">
                       {item.attributes.MiddleBlock.lDesc}
                     </p>
                   </div>
@@ -100,7 +100,7 @@ const About = () => {
                     <h3>
                       {item.attributes.MiddleBlock.rSubTitle}
                     </h3>
-                    <p>{item.attributes.MiddleBlock.rDesc}</p>
+                    <p className="text-muted">{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
                     <hr />
@@ -114,7 +114,7 @@ const About = () => {
               </div>
               <div className="container d-flex flex-wrap">
                 {item.attributes.Portals.map((card, cardIndex) => (
-                  <div key={cardIndex} className="col-md-4 card-column">
+                  <div key={cardIndex} className="col-md-3 p-4 card-column">
                     <div className="d-flex flex-wrap">
                       <img
                         src={imgurl + (card.image?.data?.attributes?.url || "")}
@@ -128,7 +128,7 @@ const About = () => {
                       </h3>
                     </div>
                     <div className="block-content">
-                      <p className="fontsize-5">{card.description}</p>
+                      <p className="fontsize-5 text-muted">{card.description}</p>
                     </div>
                   </div>
                 ))}

@@ -1,16 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./mobileapp.css";
+import "./uiEngineering.css";
 
-const MobileApp = () => {
+const UIEngineering = () => {
   const imgurl = "http://localhost:1337";
   const [data, setData] = useState([]);
-
+  
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/mobile-apps?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/ui-engineerings?populate[Header][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*&populate[images][populate]=*"
       );
       setData(response.data.data);
       console.log(response.data.data);
@@ -22,9 +22,10 @@ const MobileApp = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+ 
   return (
     <>
+      <nav></nav>
       {data.length > 0 && (
         <div className="header-container card text-bg d-flex">
           <img
@@ -49,13 +50,13 @@ const MobileApp = () => {
       <div className="container">
         {data &&
           data.map((item, index) => (
-            <div key={index} className="main-content ">
-              <div className="entry-content-page">
-                <nav
+            <div key={index} className="card-container ">
+              <div className="container">
+                <div
                   className="breadcrumbs"
                   typeof="BreadcrumbList"
                   vocab="https://schema.org/"
-                ></nav>
+                ></div>
                 <span property="itemListElement" typeof="ListItem">
                   <a
                     property="item"
@@ -81,10 +82,12 @@ const MobileApp = () => {
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name"> Mobile Apps</span>
+                  <span property="name"> UI Engineering</span>
 
                   <meta property="position" content="3" />
                 </span>
+              </div>
+              <div className="main-content">
                 <h1 className="fontsize-2 main-content-header">
                   {item.attributes.MiddleBlock.Title}
                 </h1>
@@ -95,45 +98,41 @@ const MobileApp = () => {
                     </p>
                   </div>
                   <div className="col-md-6">
-                    <h3 className="color-pink fontsize-3">
-                      {item.attributes.MiddleBlock.rSubTitle}
-                    </h3>
-                    <p className="text-muted">{item.attributes.MiddleBlock.rDesc}</p>
+                    <p className="text-muted">
+                      {item.attributes.MiddleBlock.rDesc}
+                    </p>
+                    <p className="text-muted">
+                      {item.attributes.MiddleBlock.rDesc1}
+                    </p>
                   </div>
                   <div className="service-hr-tag">
                     <hr />
-                    <h2 className="color-pink fontsize-3">
-                      {item.attributes.MiddleBlock.lSubTitle}
-                    </h2>
+                    <p>
+                      <h2 className="color-pink fontsize-3">
+                        {item.attributes.MiddleBlock.lSubTitle}
+                      </h2>
+                    </p>
                   </div>
                   <div className="section-gap20"></div>
                 </div>
-                <div className="container d-flex flex-wrap">
-                  {item.attributes.Portals.map((card, cardIndex) => (
-                    <div key={cardIndex} className="col-md-4 card-column">
-                      <div className="d-flex flex-wrap">
+              </div>
+              <div className="ecommerceBlocks">
+                <div className="rrow hidden-xs hidden-sm">
+                  {item.attributes.images.data.map((image, imageIndex) => (
+                    <div
+                      key={imageIndex}
+                      className="col-md-2 col-sm-4 col-xs-6" 
+                    > 
                         <img
-                          src={
-                            imgurl + (card.image?.data?.attributes?.url || "")
-                          }
-                          alt=""
-                          className="card-image"
+                          src={imgurl + image.attributes.url}
+                          alt="webContent"
+                          className=" attachment img-thumbnail img-fluid m-2 p-2"
                         />
-                      </div>
-                      <div>
-                        <h3 className="block-desc fontsize-4 top-margin">
-                          <p>
-                            <strong>{card.Title}</strong>
-                          </p>
-                        </h3>
-                      </div>
-                      <div className="block-content">
-                        <p className="fontsize-5 text-muted">{card.description}</p>
-                      </div>
                     </div>
                   ))}
                 </div>
               </div>
+
               <hr />
               <footer id="colophon" className="d-flex" role="contentinfo">
                 <div className="footer-widgets section-padding">
@@ -181,10 +180,10 @@ const MobileApp = () => {
             </div>
           ))}
         {console.log(data)}
-        <Link to="/CloudSolutions">CloudSolutions</Link>
+        <Link to="/Ecommerce">eCommerce & Portals</Link>
       </div>
     </>
   );
 };
 
-export default MobileApp;
+export default UIEngineering;

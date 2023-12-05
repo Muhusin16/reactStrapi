@@ -65,7 +65,7 @@ const Design = () => {
                     title="Go to Zool Tech Solutions Pvt Ltd"
                     className="home"
                   >
-                    <span property="name">Zool Tech Solutions Pvt Ltd /</span>
+                    <span property="name">Zool Tech Solutions Pvt Ltd/</span>
                   </a>
                   <meta property="position" content="1" />
                 </span>
@@ -77,12 +77,12 @@ const Design = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name"> Services /</span>
+                    <span property="name"> Services/</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Designs</span>
+                  <span property="name"> Designs</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -93,17 +93,17 @@ const Design = () => {
                 </h1>
                 <div className="row">
                   <div className="col-md-6">
-                    <p className="right-margin">
+                    <p className="right-margin text-muted">
                       {item.attributes.MiddleBlock.lDesc}
                     </p>
                     <h3 className="color-pink fontsize-3">
                       {item.attributes.MiddleBlock.lSubTitle}
                     </h3>
-                    <p className="right-margin">
+                    <p className="right-margin text-muted">
                       {item.attributes.MiddleBlock.lDesc1}
                     </p>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-6 text-muted">
                     <p>{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
@@ -131,7 +131,7 @@ const Design = () => {
                       </h3>
                     </div>
                     <div className="block-content">
-                      <p className="fontsize-5">{card.description}</p>
+                      <p className="fontsize-5 text-muted">{card.description}</p>
                     </div>
                   </div>
                 ))}

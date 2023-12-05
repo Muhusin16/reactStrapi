@@ -1,19 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./mobileapp.css";
+import "./ecommerce.css";
+// import { Link } from "react-router-dom";
+// import Navbar from "../Components/Navbar/Navbar";
 
-const MobileApp = () => {
+const Ecommers = () => {
   const imgurl = "http://localhost:1337";
-  const [data, setData] = useState([]);
+  const [data, setData] = useState("");
+
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1337/api/mobile-apps?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[Footer][populate]=*"
+        "http://localhost:1337/api/e-commerce-portals?populate[Header][populate]=*&populate[Portals][populate]=*&populate[MiddleBlock][populate]=*&populate[images][populate]=*&populate[Footer][populate]=*"
       );
       setData(response.data.data);
-      console.log(response.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -51,11 +52,11 @@ const MobileApp = () => {
           data.map((item, index) => (
             <div key={index} className="main-content ">
               <div className="entry-content-page">
-                <nav
+                <div
                   className="breadcrumbs"
                   typeof="BreadcrumbList"
                   vocab="https://schema.org/"
-                ></nav>
+                ></div>
                 <span property="itemListElement" typeof="ListItem">
                   <a
                     property="item"
@@ -81,7 +82,7 @@ const MobileApp = () => {
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name"> Mobile Apps</span>
+                  <span property="name"> eCommerce & Portals</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -89,15 +90,13 @@ const MobileApp = () => {
                   {item.attributes.MiddleBlock.Title}
                 </h1>
                 <div className="row">
-                  <div className="col-md-6">
-                    <p className="right-margin text-muted">
+                  <div className="col-md-6 ">
+                    <p className="right-margin  text-muted">
                       {item.attributes.MiddleBlock.lDesc}
                     </p>
                   </div>
-                  <div className="col-md-6">
-                    <h3 className="color-pink fontsize-3">
-                      {item.attributes.MiddleBlock.rSubTitle}
-                    </h3>
+                  <div className="col-md-6 ">
+                    <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
                     <p className="text-muted">{item.attributes.MiddleBlock.rDesc}</p>
                   </div>
                   <div className="service-hr-tag">
@@ -108,28 +107,46 @@ const MobileApp = () => {
                   </div>
                   <div className="section-gap20"></div>
                 </div>
-                <div className="container d-flex flex-wrap">
-                  {item.attributes.Portals.map((card, cardIndex) => (
-                    <div key={cardIndex} className="col-md-4 card-column">
-                      <div className="d-flex flex-wrap">
+              </div>
+              <div className="services-hr-tag">
+                <h2 className="color-pink fontsize-3">
+                  {item.attributes.lSubTitle}
+                </h2>
+              </div>
+              <div className="container d-flex flex-wrap">
+                {item.attributes.Portals.map((card, cardIndex) => (
+                  <div key={cardIndex} className="col-md-4 card-column">
+                    <div className="d-flex flex-wrap">
+                      <img
+                        src={imgurl + card.Image.data.attributes.url}
+                        alt=""
+                        className="card-image"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="block-desc fontsize-4 top-margin">
+                        <p>{card.Title}</p>
+                      </h3>
+                    </div>
+                    <div className="block-content text-muted">
+                      <p className="fontsize-5">{card.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="ecommerceBlocks ">
+                <div className="row">
+                  {item.attributes.images.data.map((image, imageIndex) => (
+                    <div
+                      key={imageIndex}
+                      className="col-md-2 col-sm-4 col-xs-6 col-md-offset-2 " 
+                    >
                         <img
-                          src={
-                            imgurl + (card.image?.data?.attributes?.url || "")
-                          }
-                          alt=""
-                          className="card-image"
+                          src={imgurl + image.attributes.url}
+                          alt="webContent"
+                          className=" attachment img-thumbnail img-fluid m-2 p-2"
                         />
-                      </div>
-                      <div>
-                        <h3 className="block-desc fontsize-4 top-margin">
-                          <p>
-                            <strong>{card.Title}</strong>
-                          </p>
-                        </h3>
-                      </div>
-                      <div className="block-content">
-                        <p className="fontsize-5 text-muted">{card.description}</p>
-                      </div>
+                        
                     </div>
                   ))}
                 </div>
@@ -154,7 +171,7 @@ const MobileApp = () => {
                                 <span
                                   key={catIndex}
                                   className="text-muted"
-                                  style={{ marginBottom: "5px" }} // Add some margin to separate items
+                                  style={{ marginBottom: "5px" }} // Adding some margin to separate items
                                 >
                                   {category.category}
                                 </span>
@@ -180,11 +197,9 @@ const MobileApp = () => {
               </footer>
             </div>
           ))}
-        {console.log(data)}
-        <Link to="/CloudSolutions">CloudSolutions</Link>
       </div>
     </>
   );
 };
 
-export default MobileApp;
+export default Ecommers;

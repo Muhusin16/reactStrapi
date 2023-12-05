@@ -1,0 +1,118 @@
+@media screen {
+    
+}
+.bg-banner-img::after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 0px;
+    background: url(//zool.in/wp-content/uploads/2016/12/header-bg.png);
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+.ms-slide-bgcont::after, .banner-img::after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 0px;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+.ms-slide-bgcont::after, .banner-img::after {
+    background: url(//zool.in/wp-content/uploads/2016/12/header-bg.png) !important;
+}
+.bg-banner-img::after {
+    height: 80%;
+}
+.ms-slide-bgcont::after, .banner-img::after {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    top: 0px;
+    background: url(//zool.in/wp-content/uploads/2016/12/header-bg.png);
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+.banner-text {
+    z-index: 999;
+}
+.banner-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.bg-banner-img {
+    height: 550px;
+    width: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.container {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+.banner-text .bgcolor-sunglow, .ms-slide-info .bgcolor-sunglow {
+    text-shadow: 1px 1px 3px #fff;
+}
+.banner-text h2 span, .ms-slide-info .ms-info h2 span {
+    font-weight: normal;
+}
+.banner-text h2 span {
+    font-weight: bold;
+}
+.fontsize-1 {
+    font-size: 3.888889rem;
+}
+*, ::after, ::before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}

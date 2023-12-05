@@ -6,7 +6,7 @@ import "./mobilehybrid.css";
 const MobileHybrid = () => {
   const imgurl = "http://localhost:1337";
   const [data, setData] = useState([]);
-  const [selectedBox, setSelectedBox] = useState(null);
+  
 
   const fetchData = async () => {
     try {
@@ -23,12 +23,7 @@ const MobileHybrid = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  const handleBoxClick = (index) => {
-    // Toggle the selected state of the clicked box
-    setSelectedBox((prevSelectedBox) =>
-      prevSelectedBox === index ? null : index
-    );
-  };
+ 
   return (
     <>
       <nav></nav>
@@ -71,7 +66,7 @@ const MobileHybrid = () => {
                     title="Go to Zool Tech Solutions Pvt Ltd"
                     className="home"
                   >
-                    <span property="name">Zool Tech Solutions Pvt Ltd /</span>
+                    <span property="name">Zool Tech Solutions Pvt Ltd/</span>
                   </a>
                   <meta property="position" content="1" />
                 </span>
@@ -83,12 +78,12 @@ const MobileHybrid = () => {
                     title="Go to Services"
                     className="post post-page"
                   >
-                    <span property="name"> Services /</span>
+                    <span property="name"> Services/</span>
                   </a>
                   <meta property="position" content="3" />
                 </span>
                 <span property="itemListElement" typeof="ListItem">
-                  <span property="name">Mobile Hybrid Development</span>
+                  <span property="name"> Mobile Hybrid Development</span>
 
                   <meta property="position" content="3" />
                 </span>
@@ -99,14 +94,14 @@ const MobileHybrid = () => {
                 </h1>
                 <div className="row">
                   <div className="col-md-6">
-                    <p className="right-margin">
+                    <p className="right-margin text-muted">
                       {item.attributes.MiddleBlock.lDesc}
                     </p>
                   </div>
                   <div className="col-md-6">
-                  <p>{item.attributes.MiddleBlock.rDesc}</p>
+                  <p className="text-muted">{item.attributes.MiddleBlock.rDesc}</p>
                     <h3>{item.attributes.MiddleBlock.rSubTitle}</h3>
-                    <p>{item.attributes.MiddleBlock.rDesc1}</p>
+                    <p className="text-muted">{item.attributes.MiddleBlock.rDesc1}</p>
                     
                   </div>
                   <div className="service-hr-tag">
@@ -125,18 +120,14 @@ const MobileHybrid = () => {
                   {item.attributes.images.data.map((image, imageIndex) => (
                     <div
                       key={imageIndex}
-                      className={`col-md-2 col-sm-4 col-xs-6 ${
-                        selectedBox === imageIndex ? "selected-box" : ""
-                      }`}
-                      onClick={() => handleBoxClick(imageIndex)}
+                      className= "col-md-2 col-sm-4 col-xs-6"
                     >
-                      <span className="border border-primary-subtle">
                         <img
                           src={imgurl + image.attributes.url}
                           alt="webContent"
-                          className="attachment"
+                          className=" attachment img-thumbnail img-fluid m-2 p-2"
                         />
-                      </span>
+                    
                     </div>
                   ))}
                 </div>

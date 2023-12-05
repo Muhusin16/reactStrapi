@@ -43,6 +43,9 @@ img {
 .nav-menu {
     float: right;
 }
+.navbar{
+    background: transparent;
+}
 
 .nav-menu, .nav-menu * {
     margin: 0;
